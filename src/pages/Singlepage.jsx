@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -6,6 +7,9 @@ const Singlepage = () => {
     console.log(singleroom)
     return (
         <div className="pt-20">
+            <Helmet>
+                <title>Room Details</title>
+            </Helmet>
             <h1>hello siglepage</h1>
         </div>
     );

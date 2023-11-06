@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import { Result } from 'postcss';
+import { Helmet } from 'react-helmet';
 const Login = () => {
 
     const { login } = useAuth()
@@ -42,6 +43,9 @@ const Login = () => {
 
     return (
         <div className=" bg-gray-900 h-screen w-screen relative overflow-hidden flex flex-col justify-center items-center">
+            <Helmet>
+                <title>Login page</title>
+            </Helmet>
             <div className="h-40-r w-40-r bg-gradient-to-r from-green-400 to-blue-500 rounded-full absolute left-2/3 -top-56 animate-pulse"></div>
             <div className="h-35-r w-35-r bg-gradient-to-r from-red-400 via-pink-500 to-purple-500 rounded-full absolute -left-20 top-96 animate-pulse"></div>
             <Tilt>

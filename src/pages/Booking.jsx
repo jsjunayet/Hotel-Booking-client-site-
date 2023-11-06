@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 
 
@@ -21,6 +22,9 @@ const Booking = () => {
     }
     return (
         <div className=" bg-gray-900   h-full w-screen relative overflow-hidden flex flex-col  pt-28">
+            <Helmet>
+                <title>Rooms page</title>
+            </Helmet>
             <div className="h-40-r w-40-r bg-gradient-to-r from-green-400 to-blue-500 rounded-full absolute left-2/3 top-96 animate-pulse"></div>
             <div className="h-35-r w-35-r bg-gradient-to-r from-red-400 via-pink-500 to-purple-500 rounded-full absolute -left-20  -top-56 animate-pulse"></div>
             <div className=" space-y-6">
