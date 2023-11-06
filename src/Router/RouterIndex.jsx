@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import Booking from "../pages/Booking";
 import MyBooking from "../pages/MyBooking";
 import Error from "../pages/Error";
+import Singlepage from "../pages/Singlepage";
 
 
 const RouterIndex = createBrowserRouter([
@@ -24,6 +25,11 @@ const RouterIndex = createBrowserRouter([
                 element: <Booking></Booking>,
                 loader: () => fetch('http://localhost:5000/api/v1/booking')
 
+            },
+            {
+                path: '/api/v1/booking/:id',
+                element: <Singlepage></Singlepage>,
+                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/booking/${params.id}`)
             },
             {
                 path: 'Booking',

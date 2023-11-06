@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const Booking = () => {
@@ -37,7 +37,7 @@ const Booking = () => {
             <div className="my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:mx-10 ">
                 {
                     Rooming.map(Room => <div key={Room._id}>
-                        <div className="card card-compact bg-base-100 shadow-xl">
+                        <Link to={`/api/v1/booking/${Room._id}`} className="card card-compact bg-base-100 shadow-xl">
                             <img className=" h-80 rounded-xl" src={Room.RoomImages.ImageUrl} alt="Shoes" />
                             <div className="card-body">
                                 <div className="card-actions flex justify-between items-center">
@@ -45,7 +45,7 @@ const Booking = () => {
                                     <span>Price : $ {Room.PricePerNight}</span>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>)
                 }
             </div>
