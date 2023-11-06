@@ -6,12 +6,14 @@ import Home from "../pages/Home";
 
 import Booking from "../pages/Booking";
 import MyBooking from "../pages/MyBooking";
+import Error from "../pages/Error";
 
 
 const RouterIndex = createBrowserRouter([
     {
         path: '/',
         element: <App></App>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
