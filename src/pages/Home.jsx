@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet";
 import Bannar from "../component/Bannar";
-import BestProduct from "../component/BestProduct";
+
 import Container from "../component/Layout/Container";
+
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             <Container>
                 <Bannar></Bannar>
                 {/* <BestProduct></BestProduct> */}
+                {/* <Testimonial></Testimonial> */}
             </Container>
         </div>
     );
