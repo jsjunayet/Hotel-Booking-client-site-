@@ -4,9 +4,14 @@ import useAuth from "../Hooks/useAuth";
 import Container from "../component/Layout/Container";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const MyBooking = () => {
     const { user } = useAuth()
+    const [startDate, setStartDate] = useState(new Date());
+    console.log(startDate)
 
     // const [booking, setbooking] = useState([])
     // useEffect(() => {
@@ -31,6 +36,14 @@ const MyBooking = () => {
         axios.delete(`http://localhost:5000/api/v1/mybook/${_id}`)
             .then(res => {
                 refetch()
+            })
+    }
+    const handleupdate = (_id) => {
+        const time = { startDate }
+        console.log(_id, time)
+        axios.patch(`http://localhost:5000/api/v1/mybook/update/${_id}`, time)
+            .then(res => {
+                console.log(res.data)
             })
     }
     return (
@@ -58,7 +71,18 @@ const MyBooking = () => {
                                 </div>
                                 <div className=" space-y-3 mt-4">
                                     <button onClick={() => handledelete(booked._id)} className="btn btn-secondary btn-outline w-full block">Cancel</button>
-                                    <button className="btn btn-secondary btn-outline w-full block">Update</button>
+                                    {/* Open the modal using document.getElementById('ID').showModal() method */}
+                                    <button className="btn btn-secondary btn-outline w-full" onClick={() => document.getElementById('my_modal_5').showModal()}>update</button>
+                                    <dialog id="my_modal_5" className="modal modal-bottom md:modal-middle">
+                                        <div className=" bg-base-200 w-96 h-52 pt-20 lg:mt-52 mt-0 mb-32 lg:mb-0 px-2 rounded-xl shadow-xl">
+
+                                            <form method="dialog">
+                                                <DatePicker className=" " selected={startDate} onChange={(date) => setStartDate(date)} />
+                                                {/* if there is a button in form, it will close the modal */}
+                                                <input onClick={() => handleupdate(booked._id)} type="submit" className="btn btn-secondary btn-outline mt-5 block" value="Please update" />
+                                            </form>
+                                        </div>
+                                    </dialog>
                                     <button className="btn btn-secondary btn-outline w-full block">Review</button>
                                 </div>
                             </div>
