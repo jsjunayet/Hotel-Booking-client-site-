@@ -2,9 +2,9 @@
 import { useState } from "react";
 import Container from "../component/Layout/Container";
 import { useLoaderData } from "react-router-dom";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../Hooks/useAuth";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -15,8 +15,8 @@ const BookNow = () => {
     const img = Booking.RoomImages.ImageUrl
 
     console.log(Booking)
-    const [startDate, setStartDate] = useState(new Date());
-    console.log(startDate)
+    // const [startDate, setStartDate] = useState(new Date());
+    // console.log(startDate)
     const handleform = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -24,6 +24,7 @@ const BookNow = () => {
         const price = form.price.value;
         const size = form.size.value;
         const descript = form.descript.value;
+        const startDate = form.startDate.value
         const MyUser = { email, price, size, descript, img, startDate }
         console.log(MyUser)
         const toastID = toast.loading(' Booking in...')
@@ -52,7 +53,8 @@ const BookNow = () => {
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="email" placeholder="email" className="input input-bordered" required /> */}
-                            <DatePicker className="w-full py-3 rounded pl-2" selected={startDate} onChange={(date) => setStartDate(date)} />
+                            {/* <DatePicker className="w-full py-3 rounded pl-2" selected={startDate} onChange={(date) => setStartDate(date)} /> */}
+                            <input type="date" name="startDate" id="" className="w-full py-3 rounded pl-2" />
 
 
                         </div>

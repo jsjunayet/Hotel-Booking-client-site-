@@ -4,14 +4,15 @@ import useAuth from "../Hooks/useAuth";
 import Container from "../component/Layout/Container";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import DatePicker from "react-datepicker";
+import Swal from "sweetalert2";
+// import DatePicker from "react-datepicker";
 
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 
 const MyBooking = () => {
     const { user } = useAuth()
-    const [startDate, setStartDate] = useState(new Date());
-    console.log(startDate)
+
+    // const [startDate, setStartDate] = useState(new Date());
 
     // const [booking, setbooking] = useState([])
     // useEffect(() => {
@@ -32,19 +33,46 @@ const MyBooking = () => {
         }
 
     })
+
     const handledelete = (_id) => {
-        axios.delete(`http://localhost:5000/api/v1/mybook/${_id}`)
-            .then(res => {
-                refetch()
-            })
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5000/api/v1/mybook/${_id}`)
+                    .then(res => {
+                        refetch()
+                    })
+
+
+            }
+        });
+
     }
+    const [date, setdate] = useState('')
+    console.log(date)
     const handleupdate = (_id) => {
-        const time = { startDate }
-        console.log(_id, time)
+        const time = { date: date }
+        console.log(time);
         axios.patch(`http://localhost:5000/api/v1/mybook/update/${_id}`, time)
             .then(res => {
-                console.log(res.data)
+                console.log()
+                if (res.data?.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Update",
+                        text: "Your successful update",
+                        icon: "success"
+                    });
+                }
+                refetch()
             })
+        setdate('')
     }
     return (
 
@@ -77,7 +105,8 @@ const MyBooking = () => {
                                         <div className=" bg-base-200 w-96 h-52 pt-20 lg:mt-52 mt-0 mb-32 lg:mb-0 px-2 rounded-xl shadow-xl">
 
                                             <form method="dialog">
-                                                <DatePicker className=" " selected={startDate} onChange={(date) => setStartDate(date)} />
+                                                {/* <DatePicker className=" " selected={startDate} onChange={(date) => setStartDate(date)} /> */}
+                                                <input type="date" onChange={(e) => setdate(e.target.value)} name="Startdate" id="" />
                                                 {/* if there is a button in form, it will close the modal */}
                                                 <input onClick={() => handleupdate(booked._id)} type="submit" className="btn btn-secondary btn-outline mt-5 block" value="Please update" />
                                             </form>
