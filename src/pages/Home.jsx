@@ -1,7 +1,9 @@
 import { Helmet } from "react-helmet";
-import Bannar from "../component/Bannar";
 
 import Container from "../component/Layout/Container";
+import Bannar1 from "../component/Bannar1";
+import Location from "../component/Location";
+import Section from "../component/Section";
 
 
 
@@ -11,10 +13,14 @@ const Home = () => {
             <Helmet>
                 <title>Home page</title>
             </Helmet>
+            <Bannar1></Bannar1>
             <Container>
-                <Bannar></Bannar>
+                <Section></Section>
+                <Location></Location>
+
+                {/* <Bannar></Bannar> */}
                 {/* <BestProduct></BestProduct> */}
-                {/* <Testimonial></Testimonial> */}
+
             </Container>
         </div>
     );

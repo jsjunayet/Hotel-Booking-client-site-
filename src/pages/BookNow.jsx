@@ -13,6 +13,7 @@ const BookNow = () => {
     const { user } = useAuth()
     const Booking = useLoaderData()
     const img = Booking.RoomImages.ImageUrl
+    console.log(Booking._id)
 
     console.log(Booking)
     // const [startDate, setStartDate] = useState(new Date());
@@ -25,7 +26,8 @@ const BookNow = () => {
         const size = form.size.value;
         const descript = form.descript.value;
         const startDate = form.startDate.value
-        const MyUser = { email, price, size, descript, img, startDate }
+        const roomid = Booking._id
+        const MyUser = { email, price, size, descript, img, startDate, roomid }
         console.log(MyUser)
         const toastID = toast.loading(' Booking in...')
         axios.post('http://localhost:5000/api/v1/mybook', MyUser)
@@ -40,15 +42,15 @@ const BookNow = () => {
     return (
         <div className="bg-gray-900 pt-24 min-h-screen">
             <Container>
-                <form onSubmit={handleform}>
-                    <div className="flex gap-5">
-                        <div className="form-control w-1/2">
+                <form className="mx-10" onSubmit={handleform}>
+                    <div className="lg:flex gap-5 ">
+                        <div className="form-control lg:w-1/2 w-full lg:mb-0 mb-5">
                             {/* <label className="label">
                                 <span className="label-text">Email</span>
                             </label> */}
                             <input type="email" name="email" placeholder="email" defaultValue={user?.email} className="input input-bordered" required />
                         </div>
-                        <div className="form-control w-1/2">
+                        <div className="form-control lg:w-1/2 w-full">
                             {/* <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
@@ -59,14 +61,14 @@ const BookNow = () => {
 
                         </div>
                     </div>
-                    <div className="flex gap-5">
-                        <div className="form-control w-1/2">
+                    <div className="lg:flex gap-5">
+                        <div className="form-control lg:w-1/2 w-full">
                             {/* <label className="label">
                                 <span className="label-text">Email</span>
                             </label> */}
                             <input type="text" name="price" placeholder="price" defaultValue={Booking.PricePerNight} className="input input-bordered mt-8" required />
                         </div>
-                        <div className="form-control w-1/2">
+                        <div className="form-control lg:w-1/2 w-full">
                             {/* <label className="label">
                                 <span className="label-text">Email</span>
                             </label> */}

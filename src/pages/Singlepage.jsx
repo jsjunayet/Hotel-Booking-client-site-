@@ -5,6 +5,7 @@ import Container from "../component/Layout/Container";
 
 const Singlepage = () => {
     const singleroom = useLoaderData()
+
     console.log(singleroom)
     return (
 

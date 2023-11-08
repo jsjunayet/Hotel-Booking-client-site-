@@ -9,6 +9,7 @@ import MyBooking from "../pages/MyBooking";
 import Error from "../pages/Error";
 import Singlepage from "../pages/Singlepage";
 import BookNow from "../pages/BookNow";
+import Private from "../pages/pvt/Private";
 
 
 const RouterIndex = createBrowserRouter([
@@ -34,7 +35,7 @@ const RouterIndex = createBrowserRouter([
             },
             {
                 path: '/booknow/:id',
-                element: <BookNow></BookNow>,
+                element: <Private><BookNow></BookNow></Private>,
                 loader: ({ params }) => fetch(`http://localhost:5000/booknow/${params.id}`)
             },
             {

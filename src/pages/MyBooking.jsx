@@ -74,8 +74,25 @@ const MyBooking = () => {
             })
         setdate('')
     }
-    return (
+    const [name, setname] = useState('')
+    const [number, setnumber] = useState('')
+    const [descript, setdescript] = useState('')
+    const [time, settime] = useState('')
+    const handlerivew = (roomid) => {
+        const review = { name, number, descript, time, roomid }
+        axios.post('http://localhost:5000/review', review)
+            .then(res => {
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        title: "Review",
+                        text: "Your successful review",
+                        icon: "success"
+                    });
+                }
+            })
 
+    }
+    return (
         <div className="bg-gray-900 min-h-screen pt-24">
 
             <Helmet>
@@ -112,7 +129,26 @@ const MyBooking = () => {
                                             </form>
                                         </div>
                                     </dialog>
-                                    <button className="btn btn-secondary btn-outline w-full block">Review</button>
+                                    <div>
+                                        <button className="btn btn-secondary btn-outline w-full" onClick={() => document.getElementById('my_modal_6').showModal()}>review</button>
+                                        <dialog id="my_modal_6" className="modal modal-bottom md:modal-middle">
+                                            <div className=" bg-base-200 w-96 h-80   mt-0  lg:mb-0 px-2 rounded-xl shadow-xl">
+
+                                                <form method="dialog">
+                                                    <div className=" space-y-3">
+                                                        <input onChange={(e) => setname(e.target.value)} type="text" className="w-full py-2 rounded mt-2" name="name" placeholder="username" />
+                                                        <input onChange={(e) => setnumber(e.target.value)} type="text" className="w-full py-2 rounded" name="rating" placeholder="rating" />
+                                                        <textarea onChange={(e) => setdescript(e.target.value)} placeholder="discription" name="textarea" className="textarea textarea-bordered textarea-xs w-full " ></textarea>
+                                                        <input onChange={(e) => settime(e.target.value)} type="datetime-local" className="w-full py-2 rounded" id="" name="time" />
+                                                    </div>
+
+                                                    {/* if there is a button in form, it will close the modal */}
+                                                    <input onClick={() => handlerivew(booked.roomid)} type="submit" className="btn btn-secondary btn-outline mt-5 block" value="SUBMIT" />
+                                                </form>
+                                            </div>
+                                        </dialog>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>)
