@@ -34,25 +34,39 @@ const MyBooking = () => {
 
     })
 
-    const handledelete = (_id) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios.delete(`http://localhost:5000/api/v1/mybook/${_id}`)
-                    .then(res => {
-                        refetch()
-                    })
+    const handledelete = (_id, before) => {
+        const dateStr1 = new Date().toLocaleDateString()
+        const dateStr2 = before
+        const date1 = new Date(dateStr1)
+        const date2 = new Date(dateStr2)
+        const daydifferent = Math.floor((date2 - date1) / (1000 * 60 * 60 * 24))
+        if (daydifferent <= 1) {
+            return Swal.fire({
+                title: "please check you date",
+                text: "you can cancel a booking before 1 day from the booking day",
+                icon: "error"
+            });
+        }
+        else {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    axios.delete(`http://localhost:5000/api/v1/mybook/${_id}`)
+                        .then(res => {
+                            refetch()
+                        })
 
 
-            }
-        });
+                }
+            });
+        }
 
     }
     const [date, setdate] = useState('')
@@ -115,7 +129,7 @@ const MyBooking = () => {
                                     </div>
                                 </div>
                                 <div className=" space-y-3 mt-4">
-                                    <button onClick={() => handledelete(booked._id)} className="btn btn-secondary btn-outline w-full block">Cancel</button>
+                                    <button onClick={() => handledelete(booked._id, booked.startDate)} className="btn btn-secondary btn-outline w-full block">Cancel</button>
                                     {/* Open the modal using document.getElementById('ID').showModal() method */}
                                     <button className="btn btn-secondary btn-outline w-full" onClick={() => document.getElementById('my_modal_5').showModal()}>update</button>
                                     <dialog id="my_modal_5" className="modal modal-bottom md:modal-middle">
