@@ -26,7 +26,6 @@ const Authcontext = ({ children }) => {
             setuser(currentuser)
             setisloading(false)
             if (currentuser) {
-
                 axios.post('http://localhost:5000/jwt', logginguser, {
                     withCredentials: true
                 })

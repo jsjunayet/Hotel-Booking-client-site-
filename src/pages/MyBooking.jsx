@@ -27,7 +27,9 @@ const MyBooking = () => {
     const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['email', user?.email],
         queryFn: async () => {
-            const result = await fetch(`http://localhost:5000/api/v1/mybook?email=${user?.email}`)
+            const result = await fetch(`http://localhost:5000/api/v1/mybook?email=${user?.email}`, {
+                credentials: 'include'
+            })
             const data = await result.json()
             return data
         }

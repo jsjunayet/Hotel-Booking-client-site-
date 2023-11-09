@@ -30,7 +30,9 @@ const BookNow = () => {
         const MyUser = { email, price, size, descript, img, startDate, roomid }
         console.log(MyUser)
         const toastID = toast.loading(' Booking in...')
-        axios.post('http://localhost:5000/api/v1/mybook', MyUser)
+        axios.post('http://localhost:5000/api/v1/mybook', MyUser, {
+            withCredentials: true
+        })
             .then(res => {
                 console.log(res.data);
                 toast.success('succesful booked', { id: toastID })

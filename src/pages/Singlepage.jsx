@@ -9,7 +9,7 @@ const Singlepage = () => {
     const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['roomid', singleroom?._id],
         queryFn: async () => {
-            const result = await fetch(`http://localhost:5000/api/v1/review?roomid=${singleroom?._id}`)
+            const result = await fetch(`http://localhost:5000/api/v1/reviews?roomid=${singleroom?._id}`)
             const data = await result.json()
             return data
         }
@@ -59,7 +59,7 @@ const Singlepage = () => {
                         </div>
                         <div>
                             <hr className="bg-gray-900 h-1 px-2 my-3" />
-                            <p className="my-2 text-xl font-medium">Review this product : {data.length}</p>
+                            <p className="my-2 text-xl font-medium">Review this ROOM : {data.length}</p>
                             <div>
                                 {
                                     data.map((review) => <div key={review._id}>
