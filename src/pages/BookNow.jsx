@@ -21,7 +21,7 @@ const BookNow = () => {
     const handleform = (e) => {
         e.preventDefault()
         const form = e.target;
-        const email = form.email.value;
+        const email = user?.email;
         const price = form.price.value;
         const size = form.size.value;
         const descript = form.descript.value;
@@ -30,7 +30,7 @@ const BookNow = () => {
         const MyUser = { email, price, size, descript, img, startDate, roomid }
         console.log(MyUser)
         const toastID = toast.loading(' Booking in...')
-        axios.post('http://localhost:5000/api/v1/mybook', MyUser, {
+        axios.post('https://assignment-11-sever-ruby.vercel.app/api/v1/mybook', MyUser, {
             withCredentials: true
         })
             .then(res => {

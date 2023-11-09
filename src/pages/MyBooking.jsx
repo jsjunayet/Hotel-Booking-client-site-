@@ -16,7 +16,7 @@ const MyBooking = () => {
 
     // const [booking, setbooking] = useState([])
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/api/v1/mybook?email=${user?.email}`, {
+    //     fetch(`https://assignment-11-sever-ruby.vercel.app/api/v1/mybook?email=${user?.email}`, {
     //         credentials: 'include'
     //     })
     //         .then(res => res.json())
@@ -27,7 +27,7 @@ const MyBooking = () => {
     const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['email', user?.email],
         queryFn: async () => {
-            const result = await fetch(`http://localhost:5000/api/v1/mybook?email=${user?.email}`, {
+            const result = await fetch(`https://assignment-11-sever-ruby.vercel.app/api/v1/mybook?email=${user?.email}`, {
                 credentials: 'include'
             })
             const data = await result.json()
@@ -60,7 +60,7 @@ const MyBooking = () => {
                 confirmButtonText: "Yes, delete it!"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    axios.delete(`http://localhost:5000/api/v1/mybook/${_id}`)
+                    axios.delete(`https://assignment-11-sever-ruby.vercel.app/api/v1/mybook/${_id}`)
                         .then(res => {
                             refetch()
                         })
@@ -76,7 +76,7 @@ const MyBooking = () => {
     const handleupdate = (_id) => {
         const time = { date: date }
         console.log(time);
-        axios.patch(`http://localhost:5000/api/v1/mybook/update/${_id}`, time)
+        axios.patch(`https://assignment-11-sever-ruby.vercel.app/api/v1/mybook/update/${_id}`, time)
             .then(res => {
                 console.log()
                 if (res.data?.modifiedCount > 0) {
@@ -96,7 +96,7 @@ const MyBooking = () => {
     const [time, settime] = useState('')
     const handlerivew = (roomid) => {
         const review = { name, number, descript, time, roomid }
-        axios.post('http://localhost:5000/review', review)
+        axios.post('https://assignment-11-sever-ruby.vercel.app/review', review)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

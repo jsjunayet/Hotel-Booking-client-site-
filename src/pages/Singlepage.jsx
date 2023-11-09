@@ -9,7 +9,7 @@ const Singlepage = () => {
     const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['roomid', singleroom?._id],
         queryFn: async () => {
-            const result = await fetch(`http://localhost:5000/api/v1/reviews?roomid=${singleroom?._id}`)
+            const result = await fetch(`https://assignment-11-sever-ruby.vercel.app/api/v1/reviews?roomid=${singleroom?._id}`)
             const data = await result.json()
             return data
         }

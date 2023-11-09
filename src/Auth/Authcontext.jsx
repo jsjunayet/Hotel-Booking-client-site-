@@ -26,7 +26,7 @@ const Authcontext = ({ children }) => {
             setuser(currentuser)
             setisloading(false)
             if (currentuser) {
-                axios.post('http://localhost:5000/jwt', logginguser, {
+                axios.post('https://assignment-11-sever-ruby.vercel.app/jwt', logginguser, {
                     withCredentials: true
                 })
                     .then(res => {
@@ -35,7 +35,7 @@ const Authcontext = ({ children }) => {
 
             }
             else {
-                axios.post('http://localhost:5000/logout', logginguser, {
+                axios.post('https://assignment-11-sever-ruby.vercel.app/logout', logginguser, {
                     withCredentials: true
                 })
                     .then(res => {

@@ -52,11 +52,11 @@ const MainLayout = ({ children }) => {
                                 <div className="mr-5 space-x-3 text-white">
                                     {/* Navbar menu content here */}
                                     <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Home</NavLink>
-                                    <NavLink to={'Room'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Rooms</NavLink>
+                                    <NavLink to={'/room'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Rooms</NavLink>
                                     {
-                                        user ? <> <NavLink to={'Booking'} className={({ isActive }) => isActive ? 'btn btn-secondary mr-5' : 'btn btn-ghost mr-5'}>My Bookings</NavLink>
+                                        user ? <> <NavLink to={'/booking'} className={({ isActive }) => isActive ? 'btn btn-secondary mr-5' : 'btn btn-ghost mr-5'}>My Bookings</NavLink>
                                             <NavLink onClick={hangleSignout} className={({ isActive }) => isActive ? 'btn btn-secondary text-black btn-outline' : 'btn btn-ghost'}>Logout</NavLink></>
-                                            : <NavLink to={'/Login'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Login</NavLink>
+                                            : <NavLink to={'/login'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Login</NavLink>
 
                                     }
                                 </div>
@@ -71,12 +71,12 @@ const MainLayout = ({ children }) => {
                     <div className="menu p-4 w-80 min-h-full bg-gray-900 pt-20 space-y-4 text-white">
                         {/* Sidebar content here */}
                         <NavLink to={'/'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Home</NavLink>
-                        <NavLink to={'Room'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Rooms</NavLink>
+                        <NavLink to={'/room'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Rooms</NavLink>
 
                         {
-                            user ? <> <NavLink to={'Booking'} className={({ isActive }) => isActive ? 'btn btn-secondary mb-5' : 'btn btn-ghost mb-5'}>My Bookings</NavLink>
+                            user ? <> <NavLink to={'/booking'} className={({ isActive }) => isActive ? 'btn btn-secondary mb-5' : 'btn btn-ghost mb-5'}>My Bookings</NavLink>
                                 <NavLink onClick={hangleSignout} className={({ isActive }) => isActive ? 'btn btn-secondary text-black btn-outline' : 'btn btn-ghost'}>Logout</NavLink></>
-                                : <NavLink to={'/Login'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Login</NavLink>
+                                : <NavLink to={'/login'} className={({ isActive }) => isActive ? 'btn btn-secondary' : 'btn btn-ghost'}>Login</NavLink>
 
                         }
                     </div>

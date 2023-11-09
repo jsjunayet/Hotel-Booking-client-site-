@@ -23,23 +23,23 @@ const RouterIndex = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: 'Room',
+                path: '/room',
                 element: <Booking></Booking>,
-                loader: () => fetch('http://localhost:5000/api/v1/booking')
+                loader: () => fetch('https://assignment-11-sever-ruby.vercel.app/api/v1/booking')
 
             },
             {
                 path: '/api/v1/booking/:id',
                 element: <Singlepage></Singlepage>,
-                loader: ({ params }) => fetch(`http://localhost:5000/api/v1/booking/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-11-sever-ruby.vercel.app/api/v1/booking/${params.id}`)
             },
             {
                 path: '/booknow/:id',
                 element: <Private><BookNow></BookNow></Private>,
-                loader: ({ params }) => fetch(`http://localhost:5000/booknow/${params.id}`)
+                loader: ({ params }) => fetch(`https://assignment-11-sever-ruby.vercel.app/booknow/${params.id}`)
             },
             {
-                path: 'Booking',
+                path: '/booking',
                 element: <MyBooking></MyBooking>,
 
             }
