@@ -2,10 +2,19 @@ import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 import img from "../assets/image/banner/img1.jpg"
 import Container from "../component/Layout/Container";
+import { useQuery } from "@tanstack/react-query";
 
 const Singlepage = () => {
     const singleroom = useLoaderData()
-
+    const { data = [], isLoading, refetch } = useQuery({
+        queryKey: ['roomid', singleroom?._id],
+        queryFn: async () => {
+            const result = await fetch(`http://localhost:5000/api/v1/review?roomid=${singleroom?._id}`)
+            const data = await result.json()
+            return data
+        }
+    })
+    console.log(data)
     console.log(singleroom)
     return (
 
@@ -33,7 +42,7 @@ const Singlepage = () => {
 
                     </div>
                     <div className=" h-96 col-span-1">
-                        <div className="card bg-base-100 shadow-xl lg:mt-14 mt-8">
+                        <div className="card bg-base-100 shadow-xl">
                             <div className="card-body font-medium text-xl space-y-4">
                                 <h2 className="card-title">{singleroom.RoomImages.ImageDescription}</h2>
                                 <p>PricePerNight : $ {singleroom.PricePerNight}</p>
@@ -46,6 +55,28 @@ const Singlepage = () => {
                                     <Link to={`/booknow/${singleroom._id}`} className="btn btn-primary btn-outline">Book Now</Link>
                                 </div>
                             </div>
+
+                        </div>
+                        <div>
+                            <hr className="bg-gray-900 h-1 px-2 my-3" />
+                            <p className="my-2 text-xl font-medium">Review this product : {data.length}</p>
+                            <div>
+                                {
+                                    data.map((review) => <div key={review._id}>
+                                        <div className="card bg-neutral text-neutral-content mt-3">
+                                            <div className="card-body">
+                                                <h2 className="card-title">{review.name}</h2>
+                                                <p>{review.descript}</p>
+                                                <p>data : {review.time}</p>
+
+                                            </div>
+                                        </div>
+                                    </div>)
+                                }
+
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

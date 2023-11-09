@@ -4,6 +4,8 @@ import Container from "../component/Layout/Container";
 import Bannar1 from "../component/Bannar1";
 import Location from "../component/Location";
 import Section from "../component/Section";
+import Bannar from "../component/Bannar";
+import Footer from "./Footer";
 
 
 
@@ -15,8 +17,13 @@ const Home = () => {
             </Helmet>
             <Bannar1></Bannar1>
             <Container>
+                <Bannar></Bannar>
                 <Section></Section>
                 <Location></Location>
+                <div className="my-5">
+                    <Footer></Footer>
+                </div>
+
 
                 {/* <Bannar></Bannar> */}
                 {/* <BestProduct></BestProduct> */}

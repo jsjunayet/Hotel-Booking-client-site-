@@ -8,6 +8,9 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 import './styles.css';
+
+// import required modules
+import { EffectCoverflow, Pagination } from 'swiper/modules';
 import img from '../../src/assets/image/banner/1.jpg'
 import img2 from '../../src/assets/image/banner/2.jpg'
 import img3 from '../../src/assets/image/banner/3.jpg'
@@ -15,12 +18,10 @@ import img4 from '../../src/assets/image/banner/4.jpg'
 import img5 from '../../src/assets/image/banner/5.jpg'
 import img6 from '../../src/assets/image/banner/6.jpg'
 import img7 from '../../src/assets/image/banner/img-2.jpg'
-
-// import required modules
-import { EffectCoverflow, Pagination } from 'swiper/modules';
 const Section = () => {
     return (
-        <div>
+        <div className='mt-10'>
+            <p className='text-4xl font-bold text-center mt-10 mb-2'>OUR BEST ROOM</p>
             <>
                 <Swiper
                     effect={'coverflow'}
@@ -30,44 +31,61 @@ const Section = () => {
                     coverflowEffect={{
                         rotate: 0,
                         stretch: 0,
-                        depth: 100,
-                        modifier: 5,
+                        depth: 50,
+                        modifier: 10,
                         slideShadows: true,
                     }}
+                    loop={true}
                     pagination={true}
                     modules={[EffectCoverflow, Pagination]}
                     className="mySwiper"
+                    breakpoints={{
+                        320: {
+                            depth: 500
+                        },
+                        480: {
+                            depth: 500
+                        },
+                        640: {
+                            depth: 500
+                        },
+                        768: {
+                            depth: 300
+                        }
+
+                    }}
+
                 >
                     <SwiperSlide>
-                        <img src={img} />
+                        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={img2} />
+                        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={img3} />
+                        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={img4} />
+                        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={img5} />
+                        <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={img6} />
+                        <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={img7} />
+                        <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={img4} />
+                        <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src={img7} />
+                        <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
                     </SwiperSlide>
                 </Swiper>
             </>
-        </div>
+        </div >
     );
 };
 

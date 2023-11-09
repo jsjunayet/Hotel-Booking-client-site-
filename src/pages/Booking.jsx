@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
+import Footer from "./Footer";
+import Container from "../component/Layout/Container";
 
 
 const Booking = () => {
@@ -51,7 +53,15 @@ const Booking = () => {
                             </div>
                         </Link>
                     </div>)
-                }s
+                }
+            </div>
+            <div>
+
+                <div className="my-5">
+                    <Footer></Footer>
+                </div>
+
+
             </div>
         </div>
     );
