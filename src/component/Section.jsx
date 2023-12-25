@@ -11,13 +11,7 @@ import './styles.css';
 
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
-import img from '../../src/assets/image/banner/1.jpg'
-import img2 from '../../src/assets/image/banner/2.jpg'
-import img3 from '../../src/assets/image/banner/3.jpg'
-import img4 from '../../src/assets/image/banner/4.jpg'
-import img5 from '../../src/assets/image/banner/5.jpg'
-import img6 from '../../src/assets/image/banner/6.jpg'
-import img7 from '../../src/assets/image/banner/img-2.jpg'
+
 const Section = () => {
     return (
         <div className='mt-10'>

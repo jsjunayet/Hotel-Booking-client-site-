@@ -23,7 +23,7 @@ const Resistration = () => {
             await signup(email, password)
                 .then(result => {
                     toast.success('Successfull SignUp', { id: toastId })
-                    navigate('/')
+                    navigate(location?.state ? location.state : '/')
                 })
                 .catch((err) => {
                     toast.error(err.message, { id: toastId })

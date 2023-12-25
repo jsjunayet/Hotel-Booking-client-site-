@@ -6,6 +6,7 @@ import Location from "../component/Location";
 import Section from "../component/Section";
 import Bannar from "../component/Bannar";
 import Footer from "./Footer";
+import Review from "./Review";
 
 
 
@@ -18,6 +19,7 @@ const Home = () => {
             <Bannar1></Bannar1>
             <Container>
                 <Bannar></Bannar>
+                <Review></Review>
                 {/* <Section></Section> */}
                 <Location></Location>
                 <div className="my-5">

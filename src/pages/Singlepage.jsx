@@ -29,12 +29,17 @@ const Singlepage = () => {
                         <button className="btn btn-primary">Get Started</button>
                     </div>
                 </div>
+
             </div>
             <Container>
                 <div className="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-3">
                     <div className=" col-span-2">
                         <div>
-                            <img src={singleroom.RoomImages.ImageUrl} className="h-[500px] rounded-xl object-cover" alt="" />
+                            <div className=" relative">
+                                <img src={singleroom.RoomImages.ImageUrl} className="h-[500px] rounded-xl object-cover" alt="" />
+                                <p className="bg-gray-600 absolute bottom-5 right-16 text-white p-3 w-40 text-2xl font-semibold rounded z-40">Review : {data.length}</p>
+                            </div>
+
                             <div className="w-[85%]">
                                 <p className="mt-5 text-xl font-medium">{singleroom.RoomDescription}</p>
                             </div>
@@ -57,7 +62,7 @@ const Singlepage = () => {
                             </div>
 
                         </div>
-                        <div>
+                        {/* <div>
                             <hr className="bg-gray-900 h-1 px-2 my-3" />
                             <p className="my-2 text-xl font-medium">Review this ROOM : {data.length}</p>
                             <div>
@@ -77,7 +82,7 @@ const Singlepage = () => {
                             </div>
 
 
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </Container>

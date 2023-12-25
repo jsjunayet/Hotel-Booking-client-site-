@@ -9,9 +9,10 @@ import Container from "../component/Layout/Container";
 const Booking = () => {
     const Rooms = useLoaderData()
     const [Rooming, setRooming] = useState(Rooms)
+    console.log(Rooming);
     useEffect(() => {
         setRooming([...Rooming.sort((a, b) => { return a.PricePerNight - b.PricePerNight })])
-    }, [])
+    }, [Rooming])
     const handlefilter = (e) => {
         e.preventDefault()
         if (e.target.value == "low") {

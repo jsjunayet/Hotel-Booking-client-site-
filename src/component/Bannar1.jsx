@@ -1,5 +1,6 @@
 import Marquee from 'react-fast-marquee';
-import img from '../../src/assets/image/banner/img-2.jpg'
+import img from '../../src/assets/image/banner/bannar.jpg'
+
 const Bannar1 = () => {
     return (
         <div>
@@ -18,7 +19,9 @@ const Bannar1 = () => {
                         <button className="btn btn-primary btn-outline">call-to-action</button>
                     </div>
                 </div>
+
             </div>
+
         </div>
     );
 };

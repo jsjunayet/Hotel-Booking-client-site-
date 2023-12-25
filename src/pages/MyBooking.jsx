@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 
 const MyBooking = () => {
     const { user } = useAuth()
+    console.log(user);
 
     // const [startDate, setStartDate] = useState(new Date());
 
@@ -95,7 +96,9 @@ const MyBooking = () => {
     const [descript, setdescript] = useState('')
     const [time, settime] = useState('')
     const handlerivew = (roomid) => {
-        const review = { name, number, descript, time, roomid }
+        const email = user?.email
+        const img = user?.photoURL
+        const review = { name, number, descript, time, roomid, email, img }
         axios.post('https://assignment-11-sever-ruby.vercel.app/review', review)
             .then(res => {
                 if (res.data.insertedId) {
@@ -117,7 +120,7 @@ const MyBooking = () => {
             <Container>
                 <div className="mt-5">
                     {
-                        data.map(booked => <div key={booked._id}>
+                        data?.map(booked => <div key={booked._id}>
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 my-3 border border-t-0 border-b-2 border-l-0 border-r-0 border-green-400 pb-2">
                                 <div>
                                     <img src={booked.img} alt="" className="h-52 w-[500px]" />
